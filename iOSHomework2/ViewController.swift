@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         let member = nameTextField.text!
         
         // MARK: -   1️⃣ تحت الخط membersNamesArray إلي المصفوفه memberقم بإضافة المتغير
-        
-        
+   
+        membersNamesArray.append(member)
         
         // MARK: -   النهاية
         
@@ -33,8 +33,7 @@ class ViewController: UIViewController {
     @IBAction func letterButton(_ sender: Any) {
         
         // MARK: -  4️⃣ functionCall داخل المتغير  secretNameLetter قم باستدعاء الدالة
-        
-        var functionCall = ""
+    let functionCall = secretNameLetter(membersNameArray: "membersNamesArray")
         
         
         // MARK: -   النهاية
@@ -52,7 +51,7 @@ class ViewController: UIViewController {
         
         // MARK: -  5️⃣ functionCall داخل المتغير  secretNameEmoji قم باستدعاء الدالة
         
-        var functionCall = ""
+        var functionCall = secretNameEmoji(membersNamesArray: membersNamesArray)
         
         // MARK: -   النهاية
         
@@ -64,8 +63,17 @@ class ViewController: UIViewController {
     
     
     
-    // MARK: - 2️⃣ تحت هذا الخط secretNameLetter قم بكتابة الداله
-    
+    // MARK: - 2️⃣ تحت هذا الخط secretNameLetter قم بكتابة
+    func secretNameLetter(membersNameArray: String) -> String {
+        var firstLetterArray: [String] = []
+        for memberName in membersNamesArray {
+            firstLetterArray.append(String(memberName.prefix(1)))
+            print(firstLetterArray.joined())
+        }
+        membersNamesArray.removeAll()
+        return firstLetterArray.joined()
+        
+    }
     
     // MARK: -   النهاية
     
@@ -74,11 +82,23 @@ class ViewController: UIViewController {
     
     
     // MARK: - 3️⃣ تحت هذا الخط secretNameEmoji قم بكتابة الداله
-    
-    
-    // MARK: -   النهاية
-    
-    
+   
+    func secretNameEmoji(membersNamesArray: [String]) ->
+        String {
+      let emojiDictionaryEnglish = [ "A": "😊", "B": "😎", "C": "😗", "D": "🤣", "E": "😍", "F": "🥰", "G": "🙃", "H": "😆", "I": "😅", "J": "😛", "K": "😀", "L": "☺️", "M": "😉", "N": "😜", "O": "😒", "P": "🥳", "Q": "🤓", "R": "😚", "S": "🙂", "T": "😞", "U": "🤩", "V": "😋", "X": "😕", "Y": "😭", "Z": "🧐" ]
+        var emojiLetterArray: [String] = []
+        for i in membersNamesArray {
+            let firstLetter = String(i.prefix(1))
+            for (letter,emoji) in emojiDictionaryEnglish
+            {
+                if letter == firstLetter{
+                    emojiLetterArray.append(emoji)
+                }
+                
+            }
+        }
+            self.membersNamesArray.removeAll()
+            return emojiLetterArray.joined()
+    }
     
 }
-
